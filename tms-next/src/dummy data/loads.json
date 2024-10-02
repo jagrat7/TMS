@@ -1,0 +1,160 @@
+{
+    "loads": [
+      {
+        "age": "2h",
+        "pickup": "20 Aug",
+        "dh_o": "46 mi",
+        "origin": "Dunn, NC",
+        "destination": "Fayetteville, NC",
+        "wt": "39k",
+        "size": "full",
+        "dist": "31 mi",
+        "truck": "V",
+        "company": "Ardent"
+      },
+      {
+        "age": "2h",
+        "pickup": "20 Aug",
+        "dh_o": "46 mi",
+        "origin": "Dunn, NC",
+        "destination": "Fayetteville, NC",
+        "wt": "39k",
+        "size": "full",
+        "dist": "31 mi",
+        "truck": "V",
+        "company": "Ardent"
+      },
+      {
+        "age": "2h",
+        "pickup": "20 Aug",
+        "dh_o": "46 mi",
+        "origin": "Dunn, NC",
+        "destination": "Fayetteville, NC",
+        "wt": "39k",
+        "size": "full",
+        "dist": "31 mi",
+        "truck": "V",
+        "company": "Ardent"
+      },
+      {
+        "age": "2h",
+        "pickup": "19 Aug",
+        "dh_o": "46 mi",
+        "origin": "Dunn, NC",
+        "destination": "Fayetteville, NC",
+        "wt": "39k",
+        "size": "full",
+        "dist": "31 mi",
+        "truck": "V",
+        "company": "Ardent"
+      },
+      {
+        "age": "3h",
+        "pickup": "19 Aug",
+        "dh_o": "46 mi",
+        "origin": "Dunn, NC",
+        "destination": "Fayetteville, NC",
+        "wt": "39k",
+        "size": "full",
+        "dist": "31 mi",
+        "truck": "V",
+        "company": "Ardent"
+      },
+      {
+        "age": "3h",
+        "pickup": "16 Aug",
+        "dh_o": "46 mi",
+        "origin": "Dunn, NC",
+        "destination": "Fayetteville, NC",
+        "wt": "39k",
+        "size": "full",
+        "dist": "31 mi",
+        "truck": "V",
+        "company": "Ardent"
+      },
+      {
+        "age": "1d",
+        "pickup": "9 Aug",
+        "dh_o": "36 mi",
+        "origin": "Smithfield, NC",
+        "destination": "Hope Mills, NC",
+        "wt": "8k",
+        "size": "full",
+        "dist": "56 mi",
+        "truck": "V",
+        "company": "Edge Logistics"
+      },
+      {
+        "age": "9h",
+        "pickup": "9 Aug",
+        "dh_o": "113 mi",
+        "origin": "Thomasville, NC",
+        "destination": "Belmont, NC",
+        "wt": "26k",
+        "size": "full",
+        "dist": "79 mi",
+        "truck": "V",
+        "company": "Fifth Wheel Freight"
+      },
+      {
+        "age": "17m",
+        "pickup": "9 Aug",
+        "dh_o": "58 mi",
+        "origin": "Wilson, NC",
+        "destination": "Brooklyn, NY",
+        "wt": "40k",
+        "size": "full",
+        "dist": "405 mi",
+        "truck": "V",
+        "company": "TQL"
+      },
+      {
+        "age": "3h",
+        "pickup": "12 Aug",
+        "dh_o": "36 mi",
+        "origin": "Four Oaks, NC",
+        "destination": "Lorton, VA",
+        "wt": "43k",
+        "size": "full",
+        "dist": "259 mi",
+        "truck": "V",
+        "company": "Beemac Logistics / Hybrid Global L..."
+      },
+      {
+        "age": "4h",
+        "pickup": "9 Aug",
+        "dh_o": "46 mi",
+        "origin": "Dunn, NC",
+        "destination": "Portsmouth, VA",
+        "wt": "42k",
+        "size": "full",
+        "dist": "196 mi",
+        "truck": "V",
+        "company": "Newtrul"
+      },
+      {
+        "age": "4h",
+        "pickup": "8 Aug",
+        "dh_o": "92 mi",
+        "origin": "Greensboro, NC",
+        "destination": "Franklin, VA",
+        "wt": "44k",
+        "size": "full",
+        "dist": "192 mi",
+        "truck": "V",
+        "company": "Blue Line Logistics, Inc."
+      },
+      {
+        "age": "1d",
+        "pickup": "14 Aug",
+        "dh_o": "36 mi",
+        "origin": "Four Oaks, NC",
+        "destination": "Lorton, VA",
+        "wt": "43k",
+        "size": "full",
+        "dist": "259 mi",
+        "truck": "V",
+        "company": "Beemac Logistics / Hybrid Global L..."
+      }
+    ]
+  }

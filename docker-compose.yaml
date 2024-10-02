@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: passadmin
+      POSTGRES_DB: ch
+      POSTGRES_USER: admin
+    # env_file:
+    #   - .env
+    ports:
+      - "5432:5432"
+
+
+volumes:
+  postgres_data:

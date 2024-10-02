@@ -1,0 +1,281 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id         String   @id @default(cuid())
+  googleId    String?  @unique
+  fristname       String?
+  lastName   String?
+  email      String   @unique
+  password_hash   String?
+  role       Role?     @relation(fields: [roleType], references: [type])
+  roleType   String?
+  driver     Driver[]
+  expenses   Expense[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  sessions Session[]
+}
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+model Role {
+  type  String @id @default(cuid())
+  users User[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Carrier {
+  id          String   @id @default(cuid())
+  carrierName String
+  mcNumber    Int
+  dotNumber   Int
+  phone       Int
+  rating      Rating?  @relation(fields: [ratingId], references: [id])
+  ratingId    String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+
+model Driver {
+  id          String    @id @default(cuid())
+  firstName   String
+  lastName    String
+  dateOfBirth String
+  email       String    @unique
+  phone       Int
+  address     String
+  city        String
+  state       String
+  zipCode     Int
+  payType     PayType   @relation(fields: [payTypeId], references: [id])
+  payTypeId   String
+  document    Document? @relation(fields: [documentId], references: [id])
+  documentId  String?
+  note        Note?     @relation(fields: [noteId], references: [id])
+  noteId      String?
+  truck       Truck?    @relation(fields: [truckId], references: [id])
+  truckId     String?      @unique
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String    @unique
+  load       Load[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Note {
+  id      String   @id @default(cuid())
+  name    String
+  drivers Driver[]
+  trucks  Truck[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model PayType {
+  id       String   @id @default(cuid())
+  name     String
+  docType  DocType  @relation(fields: [doctypeId], references: [doctype])
+  doctypeId String
+  drivers  Driver[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model DocType {
+  doctype   String    @id 
+  payTypes  PayType[]
+  documents Document[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Document {
+  id        String   @id @default(cuid())
+  name      String
+  docType   DocType  @relation(fields: [doctypeId], references: [doctype])
+  doctypeId String
+  drivers   Driver[]
+  trucks    Truck[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Truck {
+  id            String       @id @default(cuid()) 
+  unit          String
+  vinNumber     String
+  year          Int
+  make          String
+  model         String
+  document      Document?    @relation(fields: [documentId], references: [id])
+  documentId    String?
+  note          Note?        @relation(fields: [noteId], references: [id])
+  noteId        String?
+  repairs       Repair[]
+  licensePlate  LicensePlate @relation(fields: [licensePlateId], references: [plateNumber])
+  licensePlateId String
+  driver        Driver?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Broker {
+  id         String @id @default(cuid())
+  brokerName String
+  address    String
+  city       String
+  state      String
+  phone      Int
+  email      String
+  mc         Int
+  load      Load[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model LicensePlate {
+  plateNumber String @id
+  plateState  String
+  trucks      Truck[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Company {
+  id      String @id @default(cuid())
+  name    String
+  address String
+  city    String
+  state   String
+  zipCode Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Load {
+  id          String    @id @default(cuid())
+  pickUpDate  DateTime
+  dropOffDate DateTime
+  loadNumber  Int
+  rate        Float
+  broker      Broker    @relation(fields: [brokerId], references: [id])
+  brokerId    String
+  shipper     Shipper   @relation(fields: [shipperId], references: [id])
+  shipperId   String
+  receiver    Receiver  @relation(fields: [receiverId], references: [id])
+  receiverId  String
+  driver      Driver    @relation(fields: [driverId], references: [id])
+  driverId    String
+  rating      Rating?   @relation(fields: [ratingId], references: [id])
+  ratingId    String?
+  expenses    Expense[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Shipper {
+  id          String  @id @default(cuid())
+  shipperName String
+  address     String
+  city        String
+  state       String
+  zipCode     Int
+  mcNumber    String
+  rating      Rating? @relation(fields: [ratingId], references: [id])
+  ratingId    String?
+  load       Load[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Receiver {
+  id           String  @id @default(cuid())
+  receiversName String
+  address      String
+  city         String
+  state        String
+  zipCode      String
+  mcNumber     String
+  rating       Rating? @relation(fields: [ratingId], references: [id])
+  ratingId     String?
+  load       Load[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Rating {
+  id        String     @id @default(cuid())
+  rating    String
+  comments  String
+  carriers  Carrier[]
+  shippers  Shipper[]
+  receivers Receiver[]
+  load     Load[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Expense {
+  id      String      @id @default(cuid())
+  name    String
+  type    ExpenseType @relation(fields: [typeId], references: [type])
+  typeId  String
+  amount  Float
+  load    Load        @relation(fields: [loadId], references: [id])
+  loadId  String
+  user    User        @relation(fields: [userId], references: [id])
+  userId  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model ExpenseType {
+  type     String    @id
+  expenses Expense[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Repair {
+  id      String @id @default(cuid())
+  truck   Truck  @relation(fields: [truckId], references: [id])
+  truckId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Add other fields as needed
+}
